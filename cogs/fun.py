@@ -17,6 +17,14 @@ class Fun(commands.Cog):
         await ctx.send(f"{ctx.author.mention} got some milk from server's storage!")
     
     @commands.command()
+    async def cupcake(self, ctx):
+        await ctx.send(f"{ctx.author.mention} got a cupcake from server's storage! Don't forget to thank Natsuki for this!")
+    
+    @commands.command()
+    async def tea(self, ctx):
+        await ctx.send(f"{ctx.author.mention} got some tea from server's storage! Don't forget to thank Yuri for this!")
+
+    @commands.command()
     async def meetings(self, ctx):
         await ctx.send("You can get all season link here: https://www.dokidokimodclub.com/mod/146")
 
