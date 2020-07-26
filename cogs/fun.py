@@ -25,6 +25,10 @@ class Fun(commands.Cog):
         await ctx.send(f"{ctx.author.mention} got some tea from server's storage! Don't forget to thank Yuri for this!")
 
     @commands.command()
+    async def waffle(self, ctx):
+        await ctx.send(f"{ctx.author.mention} got two waffles from server's storage! Don't forget to thank countess for this!")
+    
+    @commands.command()
     async def meetings(self, ctx):
         await ctx.send("You can get all season link here: https://www.dokidokimodclub.com/mod/146")
 
