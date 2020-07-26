@@ -27,6 +27,10 @@ class Fun(commands.Cog):
     @commands.command()
     async def waffle(self, ctx):
         await ctx.send(f"{ctx.author.mention} got two waffles from server's storage! Don't forget to thank countess for this!")
+
+    @commands.command()
+    async def coffee(self, ctx):
+        await ctx.send(f"{ctx.author.mention} got some coffee from server's storage! Don't forget to thank Monika for this!")
     
     @commands.command()
     async def meetings(self, ctx):
