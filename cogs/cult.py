@@ -34,8 +34,9 @@ class CultCog(commands.Cog):
                 await channel.edit(name=name)
             except: continue
         await cm.edit(name="Club Meetings Cult")
+        self.bot.command_prefix = "cult "
         await cm.me.edit(nick="Cult Bot")
-        await ctx.send("All praise the Club Meetings Dev!")
+        await ctx.send("All praise the Club Meetings Dev! Prefix is `cult `.")
     
     @cult.command(name="end")
     async def cult_end(self, ctx):
@@ -60,8 +61,9 @@ class CultCog(commands.Cog):
                 await channel.edit(name=name)
             except: continue
         await cm.edit(name="Doki Doki Club Meetings")
+        self.bot.command_prefix = "club "
         await cm.me.edit(nick=None)
-        await ctx.send("Cult Days are done. See ya next time.")
+        await ctx.send("Cult Days are done. See ya next time. Prefix is `club ` now.")
 
 def setup(bot):
     bot.add_cog(CultCog(bot))
