@@ -46,17 +46,17 @@ class CultCog(commands.Cog):
                 if role.name in list(self.reverse_names):
                     name = self.reverse_names[role.name]
                 else:
-                    name = role.name[4:]
+                    name = role.name[5:]
                 await role.edit(name=name)
             except: continue
         for channel in cm.text_channels:
             try:
-                name = channel.name[4:]
+                name = channel.name[5:]
                 await channel.edit(name=name)
             except: continue
         for channel in cm.voice_channels:
             try:
-                name = channel.name[4:]
+                name = channel.name[5:]
                 await channel.edit(name=name)
             except: continue
         await cm.edit(name="Doki Doki Club Meetings")
