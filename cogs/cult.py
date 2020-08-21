@@ -1,10 +1,11 @@
 from discord.ext import commands
+from asyncio import sleep
 
 class CultCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.custom_names = {"Baby":"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜", "Countess":"Cult Leader", "muted": "Kicked from the Cult", "Charles": "Cult Butler", "Meetings Bot": "Cult Bot"}
-        self.reverse_names = {"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜": "Baby", "Cult Leader": "Countess", "Kicked from the Cult": "muted", "Cult Butler": "Charles", "Cult Bot": "Meetings Bot"}
+        self.custom_names = {"Baby":"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜", "Countess":"Cult Leader", "muted": "Kicked from the Cult", "Charles": "Cult Butler", "Meetings Bot": "Cult Bot", "Members": "Cultists"}
+        self.reverse_names = {"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜": "Baby", "Cult Leader": "Countess", "Kicked from the Cult": "muted", "Cult Butler": "Charles", "Cult Bot": "Meetings Bot", "Cultists": "Members"}
     
     @commands.is_owner()
     @commands.group(invoke_without_command=False)
@@ -15,6 +16,7 @@ class CultCog(commands.Cog):
     async def cult_start(self, ctx):
         cm = self.bot.get_guild(730055007226953768)
         for role in cm.roles:
+            sleep(2)
             try:
                 if role.name in ["Blue Cat", "Groovy", "Tupperbox"]: continue
                 if role.name in list(self.custom_names):
@@ -24,11 +26,13 @@ class CultCog(commands.Cog):
                 await role.edit(name=name)
             except: continue
         for channel in cm.text_channels:
+            sleep(2)
             try:
                 name = "cult-"+channel.name
                 await channel.edit(name=name)
             except: continue
         for channel in cm.voice_channels:
+            sleep(2)
             try:
                 name = "Cult "+channel.name
                 await channel.edit(name=name)
@@ -42,6 +46,7 @@ class CultCog(commands.Cog):
     async def cult_end(self, ctx):
         cm = self.bot.get_guild(730055007226953768)
         for role in cm.roles:
+            sleep(2)
             try:
                 if role.name in ["Blue Cat", "Groovy", "Tupperbox"]: continue
                 if role.name in list(self.reverse_names):
@@ -51,11 +56,13 @@ class CultCog(commands.Cog):
                 await role.edit(name=name)
             except: continue
         for channel in cm.text_channels:
+            sleep(2)
             try:
                 name = channel.name[5:]
                 await channel.edit(name=name)
             except: continue
         for channel in cm.voice_channels:
+            sleep(2)
             try:
                 name = channel.name[5:]
                 await channel.edit(name=name)
