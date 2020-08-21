@@ -21,6 +21,15 @@ class RoleGiverCog(commands.Cog):
         dump(data, open("bot-settings/instamute.json", "w"))
         await ctx.send("User was instamuted, if they'll join, I'll add a muted role.")
     
+    @commands.is_owner()
+    @commands.command()
+    async def deinstamute(self, ctx, id):
+        self.instamute_cache.remove(id)
+        data = load(open("bot-settings/instamute.json", "r"))
+        data["muted"].remove(id)
+        dump(data, open("bot-settings/instamute.json", "w"))
+        await ctx.send("User was deinstamuted, if they'll join, I'll do nothing.")
+    
     @commands.Cog.listener()
     async def on_member_join(self, member):
         if str(member.id) in self.instamute_cache:
