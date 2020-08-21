@@ -17,7 +17,11 @@ class Counter(commands.Cog):
         file = load(open("bot-settings/counter.json", "r"))
         msglist = list(file.items())
         msglist.sort(key=lambda i: i[1])
-        await ctx.send(f"Messages: {file[str(ctx.author.id)]}, #{msglist.index(str(ctx.author.id))+1} on leaderboard")
+        for id, count in msglist:
+            if int(id) == ctx.author.id:
+                member = msglist.index((id, count))
+                break
+        await ctx.send(f"Messages: {file[str(ctx.author.id)]}, #{member+1} on leaderboard")
 
 def setup(bot):
     bot.add_cog(Counter(bot))
