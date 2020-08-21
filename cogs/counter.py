@@ -7,6 +7,8 @@ class Counter(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message):
+        if message.author.bot:
+            return
         file = load(open("bot-settings/counter.json", "r"))
         try: file[str(message.author.id)] +=1
         except: file[str(message.author.id)] = 1
