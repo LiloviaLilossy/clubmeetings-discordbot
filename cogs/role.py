@@ -23,7 +23,7 @@ class RoleGiverCog(commands.Cog):
     
     @commands.Cog.listener()
     async def on_member_join(self, member):
-        if member.id in self.instamute_cache:
+        if str(member.id) in self.instamute_cache:
             role = member.guild.get_role(738982557999169627)
             await member.add_roles(role, reason="Is in instamute list.")
             await member.send("You were muted from Doki Doki Club Meetings Discord Server. It's better to ask LiloviaLilossy#4389 for reason.")
