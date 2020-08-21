@@ -17,7 +17,7 @@ class RoleGiverCog(commands.Cog):
     async def instamute(self, ctx, id):
         self.instamute_cache.append(id)
         data = load(open("bot-settings/instamute.json", "r"))
-        data.append(id)
+        data["muted"].append(id)
         dump(data, open("bot-settings/instamute.json", "w"))
         await ctx.send("User was instamuted, if they'll join, I'll add a muted role.")
     
