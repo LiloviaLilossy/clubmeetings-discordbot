@@ -16,7 +16,7 @@ class Counter(commands.Cog):
     async def msgcount(self, ctx):
         file = load(open("bot-settings/counter.json", "r"))
         msglist = list(file.items())
-        msglist.sort(key=lambda i: i[1])
+        msglist.sort(key=lambda i: i[1], reverse=True)
         for id, count in msglist:
             if int(id) == ctx.author.id:
                 member = msglist.index((id, count))
