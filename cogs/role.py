@@ -13,7 +13,7 @@ class RoleGiverCog(commands.Cog):
         await ctx.author.add_roles(role)
     
     @commands.is_owner()
-    @command.command()
+    @commands.command()
     async def instamute(self, ctx, id):
         self.instamute_cache.append(id)
         data = load(open("bot-settings/instamute.json", "r"))
