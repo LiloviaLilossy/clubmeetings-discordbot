@@ -28,7 +28,7 @@ class Counter(commands.Cog):
         await ctx.send(f"Messages: {file[str(ctx.author.id)]}, #{member+1} on leaderboard")
     
     @commands.command()
-    async def leaderboard(self, ctx):
+    async def leaderboard(self, ctx, custom="f"):
         roles = [730055504285401138, 730255086525218836, 743726297343066113, 733000619199037452, 730073887244681326, 730055648011878530, 733545011756662914, 740608292979474443, 730076720308420681, 730055873069711440, 734050572088508448, 740564108377718846, 744545560295374858, 744559294959059065]
         e = Embed(color=Colour.gold())
         e.description = "Club Meetings Leaderboard!"
@@ -40,10 +40,11 @@ class Counter(commands.Cog):
         for id, count in msglist:
             breaking = False
             member = ctx.guild.get_member(int(id))
-            for role in member.roles:
-                if role.id in roles:
-                    breaking = True
-            if breaking: continue
+            if custom == "f":
+                for role in member.roles:
+                    if role.id in roles:
+                        breaking = True
+                if breaking: continue
             text += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
         e.add_field(name="There are only members without custom roles.", value=text)
         await ctx.send(embed=e)
