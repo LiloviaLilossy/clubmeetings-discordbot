@@ -43,10 +43,9 @@ class Counter(commands.Cog):
             member = ctx.guild.get_member(int(id))
             for role in member.roles:
                 if role.id in roles:
-                    if custom == "f":
-                        breaking = True
-                    else:
-                        custommsg += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
+                    breaking = True
+            if custom != "f" and breaking:
+                custommsg += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
             if breaking: continue
             text += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
         e.add_field(name="There are only members without custom roles.", value=text)
