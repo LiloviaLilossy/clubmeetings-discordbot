@@ -39,12 +39,12 @@ class Counter(commands.Cog):
         msglist.sort(key=lambda i: i[1], reverse=True)
         for id, count in msglist:
             breaking = False
-            member = ctx.guild.get_member(id)
+            member = ctx.guild.get_member(int(id))
             for role in member.roles:
                 if role.id in roles:
                     breaking = True
             if breaking: continue
-            text += f"#{msglist.index((id, count))+1} - {member.name} ({count} messages) \n"
+            text += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
         e.add_field(name="There are only members without custom roles.", value=text)
         await ctx.send(embed=e)
 
