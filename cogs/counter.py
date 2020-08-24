@@ -50,7 +50,7 @@ class Counter(commands.Cog):
             text += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
         e.add_field(name="There are only members without custom roles.", value=text)
         if custom != "f":
-            e.add_field(name="This are members with custom roles.", value=custommsg)
+            e.add_field(name="There are members with custom roles.", value=custommsg)
         await ctx.send(embed=e)
 
 def setup(bot):
