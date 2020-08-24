@@ -30,7 +30,7 @@ class Counter(commands.Cog):
     @commands.command()
     async def leaderboard(self, ctx):
         roles = [740608292979474443, 730076720308420681, 730055873069711440, 734050572088508448, 740564108377718846, 744545560295374858, 744559294959059065]
-        e = Embed(color=Colour().gold)
+        e = Embed(color=Colour.gold())
         e.description = "Club Meetings Leaderboard!"
         e.timestamp = datetime.datetime.utcnow()
         text = ""
