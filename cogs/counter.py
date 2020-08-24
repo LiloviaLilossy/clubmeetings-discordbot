@@ -34,19 +34,24 @@ class Counter(commands.Cog):
         e.description = "Club Meetings Leaderboard!"
         e.timestamp = datetime.datetime.utcnow()
         text = ""
+        custommsg = ""
         file = load(open("bot-settings/counter.json", "r"))
         msglist = list(file.items())
         msglist.sort(key=lambda i: i[1], reverse=True)
         for id, count in msglist:
             breaking = False
             member = ctx.guild.get_member(int(id))
-            if custom == "f":
-                for role in member.roles:
-                    if role.id in roles:
+            for role in member.roles:
+                if role.id in roles:
+                    if custom == "f":
                         breaking = True
-                if breaking: continue
+                    else:
+                        custommsg += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
+            if breaking: continue
             text += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
         e.add_field(name="There are only members without custom roles.", value=text)
+        if custom != "f":
+            e.add_field(name="This are members with custom roles.", value=custommsg)
         await ctx.send(embed=e)
 
 def setup(bot):
