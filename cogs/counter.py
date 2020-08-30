@@ -40,10 +40,12 @@ class Counter(commands.Cog):
         msglist.sort(key=lambda i: i[1], reverse=True)
         for id, count in msglist:
             breaking = False
-            member = ctx.guild.get_member(int(id))
-            for role in member.roles:
-                if role.id in roles:
-                    breaking = True
+            try:
+                member = ctx.guild.get_member(int(id))
+                for role in member.roles:
+                    if role.id in roles:
+                        breaking = True
+            except: continue
             if custom != "f" and breaking:
                 custommsg += f"#{msglist.index((id, count))+1} - {member.mention} ({count} messages) \n"
             if breaking: continue
