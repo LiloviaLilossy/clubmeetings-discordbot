@@ -1,4 +1,4 @@
-from discord import Embed, Colour
+from discord import Embed, Colour, ChannelType
 from discord.ext import commands
 from json import load, dump
 import datetime
@@ -9,7 +9,7 @@ class Counter(commands.Cog):
     
     @commands.Cog.listener()
     async def on_message(self, message):
-        if message.author.bot:
+        if message.author.bot or message.channel.id == 732454408859680809 or message.channel.type == ChannelType.private:
             return
         file = load(open("bot-settings/counter.json", "r"))
         try: file[str(message.author.id)] +=1
