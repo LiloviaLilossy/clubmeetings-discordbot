@@ -29,7 +29,11 @@ class Counter(commands.Cog):
     
     @commands.command()
     async def leaderboard(self, ctx, custom="f"):
-        roles = [730055504285401138, 730255086525218836, 743726297343066113, 733000619199037452, 730073887244681326, 730055648011878530, 733545011756662914, 740608292979474443, 730076720308420681, 730055873069711440, 734050572088508448, 740564108377718846, 744545560295374858, 744559294959059065]
+        roles = [
+            737913177425313822, 730055648011878530, # Server Admins and Server Bots are ignored by default.
+            730076720308420681, 740564108377718846, 730055873069711440, # artbot, Baby, Janitor
+            744559294959059065, 734050572088508448, 744545560295374858 # Astronaut, Cheeseboi, Clown
+            ]
         e = Embed(color=Colour.gold())
         e.description = "Club Meetings Leaderboard!"
         e.timestamp = datetime.datetime.utcnow()
