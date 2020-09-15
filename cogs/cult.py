@@ -18,19 +18,22 @@ class CultCog(commands.Cog):
         for role in cm.roles:
             sleep(2)
             try:
-                if role.name in ["Blue Cat", "Groovy", "Tupperbox"]: continue
+                if role.name in ["Groovy", "Tupperbox"]: 
+                    continue
                 if role.name in list(self.custom_names):
                     name = self.custom_names[role.name]
                 else:
                     name = "Cult " + role.name
                 await role.edit(name=name)
-            except: continue
+            except Exception: 
+                pass
         for channel in cm.text_channels:
             sleep(2)
             try:
                 name = "cult-"+channel.name
                 await channel.edit(name=name)
-            except: continue
+            except Exception: 
+                pass
         for channel in cm.voice_channels:
             sleep(2)
             try:
@@ -48,25 +51,29 @@ class CultCog(commands.Cog):
         for role in cm.roles:
             sleep(2)
             try:
-                if role.name in ["Blue Cat", "Groovy", "Tupperbox"]: continue
+                if role.name in ["Groovy", "Tupperbox"]: 
+                    continue
                 if role.name in list(self.reverse_names):
                     name = self.reverse_names[role.name]
                 else:
                     name = role.name[5:]
                 await role.edit(name=name)
-            except: continue
+            except Exception: 
+                pass
         for channel in cm.text_channels:
             sleep(2)
             try:
                 name = channel.name[5:]
                 await channel.edit(name=name)
-            except: continue
+            except Exception: 
+                pass
         for channel in cm.voice_channels:
             sleep(2)
             try:
                 name = channel.name[5:]
                 await channel.edit(name=name)
-            except: continue
+            except Exception: 
+                pass
         await cm.edit(name="Doki Doki Club Meetings")
         self.bot.command_prefix = "club "
         await cm.me.edit(nick=None)
