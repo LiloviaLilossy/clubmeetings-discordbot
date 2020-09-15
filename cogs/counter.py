@@ -1,5 +1,5 @@
 from discord import Embed, Colour, ChannelType
-from discord.ext import commands
+from discord.ext import commands, tasks
 from json import load, dump
 import datetime
 
@@ -58,6 +58,20 @@ class Counter(commands.Cog):
         if custom != "f":
             e.add_field(name="There are members with custom roles.", value=custommsg)
         await ctx.send(embed=e)
+    
+    @tasks.loop(hours=1)
+    async def backup(self):
+        with open("bot-settings/counter_backup.json", "w") as f:
+            data = load(open("bot-settings/counter.json", "r"))
+            dump(data, f)
+    
+    @commands.is_owner()
+    @commands.command()
+    async def restore(self, ctx):
+        with open("bot-settings/counter.json", "w") as f:
+            data = load(open("bot-settings/counter_backup.json", "r"))
+            dump(data, f)
+        await ctx.send("Backup is successfully restored!")
 
 def setup(bot):
     bot.add_cog(Counter(bot))
