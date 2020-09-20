@@ -4,8 +4,17 @@ from asyncio import sleep
 class CultCog(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.custom_names = {"Baby":"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜", "Countess":"Cult Leader", "muted": "Kicked from the Cult", "Charles": "Cult Butler", "Meetings Bot": "Cult Bot", "Members": "Cultists"}
-        self.reverse_names = {"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜": "Baby", "Cult Leader": "Countess", "Kicked from the Cult": "muted", "Cult Butler": "Charles", "Cult Bot": "Meetings Bot", "Cultists": "Members"}
+        self.custom_names = {"Baby":"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜", "Sonic Enthusiast": "Hedgehog Mafia",
+                            "muted": "Kicked from the Cult", "Winged Hussar": "Winged Cultist", "Blue Assassinator": "Thompson",
+                            "Charles": "Cult Butler", "Vanguard Memer": "Cult Master Tposer", 
+                            "Members": "Cultists",
+                            "Server Bots": "Cult Bots"
+                            }
+        self.reverse_names = {"B̶̛̛̰͎͙͚̝̯̩̣͕͆̀̌̊́̍͊̀̈́̐̊̆̀̓͜͠a̸̡̤̥͔̻͛̀b̸̮̤̜̻̺̱̗̓̏̈̓͗̅͒̆̊͌̾͗̉̋̏͜͝͝ẏ̵̧͖͙̟͕̞̫͛͌̏̾̋͛̐͆͗̈́͆̊̇̏͜": "Baby", "Hedgehog Mafia": "Sonic Enthusiast",
+                            "Kicked from the Cult": "muted", "Winged Cultist": "Winged Hussar", "Thompson": "Blue Assassinator",
+                            "Cult Butler": "Charles", "Cult Master Tposer": "Vanguard Memer",
+                            "Cultists": "Members",
+                            "Cult Bots": "Server Bots"}
     
     @commands.is_owner()
     @commands.group(invoke_without_command=False)
@@ -18,7 +27,7 @@ class CultCog(commands.Cog):
         for role in cm.roles:
             sleep(2)
             try:
-                if role.name in ["Groovy", "Tupperbox"]: 
+                if role.name in ["Groovy", "Tupperbox", "Adult"]: 
                     continue
                 if role.name in list(self.custom_names):
                     name = self.custom_names[role.name]
@@ -51,7 +60,7 @@ class CultCog(commands.Cog):
         for role in cm.roles:
             sleep(2)
             try:
-                if role.name in ["Groovy", "Tupperbox"]: 
+                if role.name in ["Groovy", "Tupperbox", "Adult"]: 
                     continue
                 if role.name in list(self.reverse_names):
                     name = self.reverse_names[role.name]
