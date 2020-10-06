@@ -13,7 +13,7 @@ class RoleGiverCog(commands.Cog):
         await ctx.author.add_roles(role)
     
     @commands.command()
-    async def cmrole(self, ctx, answer):
+    async def cmrole(self, ctx, *, answer):
         if answer.lower() == "no spoilers":
             role = ctx.guild.get_role(763077636577558529)
         elif answer.lower() == "prediction":
