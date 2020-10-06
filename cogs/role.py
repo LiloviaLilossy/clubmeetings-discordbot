@@ -12,6 +12,17 @@ class RoleGiverCog(commands.Cog):
         role = ctx.guild.get_role(730055612037333062)
         await ctx.author.add_roles(role)
     
+    @commands.command()
+    async def cmrole(self, ctx, answer):
+        if answer.lower() == "no spoilers":
+            role = ctx.guild.get_role(763077636577558529)
+        elif answer.lower() == "prediction":
+            role = ctx.guild.get_role(763078046306795520)
+        else:
+            return await ctx.send("You need to choose one of the roles: `no spoilers` or `prediction`!")
+        await ctx.author.add_roles(role)
+        await ctx.send("Done!")
+    
     @commands.is_owner()
     @commands.command()
     async def instamute(self, ctx, uid):
