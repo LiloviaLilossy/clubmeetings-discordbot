@@ -34,7 +34,7 @@ class Fun(commands.Cog):
     
     @commands.command()
     async def meetings(self, ctx):
-        await ctx.send("You can get all season link here: https://www.dokidokimodclub.com/mod/146")
+        await ctx.send("You can get all season link here: https://www.dokidokimodclub.com/mod/146\n Season 2 Episode 1 link: https://www.dokidokimodclub.com/mod/173/")
 
 def setup(bot):
     bot.add_cog(Fun(bot))
